@@ -115,6 +115,12 @@
   /* Apple's badge, unchanged: no hover motion, at least 40 px tall, clear space of a quarter of its height. */
   .badge { display: inline-block; margin: 10px 0 6px; border-radius: 10px; }
   .badge picture { display: block; }
+  /* Before launch: our own button to the public TestFlight link. Apple has no beta badge and
+     doesn't allow its logo on our buttons, so it's plain text in the action colour. */
+  .beta { display: inline-block; margin: 10px 0 6px; padding: 14px 24px; border-radius: 14px; background: var(--action);
+    color: #FFFFFF; font-size: 17px; font-weight: 600; line-height: 1.2; text-decoration: none; }
+  .beta:hover { filter: brightness(1.08); }
+  .beta:focus-visible { outline: 3px solid var(--action-text); outline-offset: 3px; }
   .badge img { width: 150px; height: 50px; }
   .small { font-size: 14px; color: var(--muted); }
 
@@ -284,8 +290,8 @@
       <h1>Margins</h1>
       <p class="subtitle">Pages, notes and reading stats</p>
       <p class="lead">Log the page you’re on and a short note about what you read. See your reading days, pages this year and best months. Books sync through iCloud.</p>
-      <a class="badge" href="https://apps.apple.com/app/id6822421030"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/app-store-badge-white.svg"><img src="assets/app-store-badge.svg" width="150" height="50" alt="Download on the App Store"></picture></a>
-      <p class="small">Free. No ads, no in-app purchases.</p>
+      <a class="beta" href="https://testflight.apple.com/join/FGvyMEuq">Join the beta on TestFlight</a>
+      <p class="small">Free. You’ll need the TestFlight app on your iPhone.</p>
     </div>
     <div class="stage s-hero">
       <div class="phone">
@@ -645,7 +651,7 @@
       <a href="https://apps.apple.com/app/id6822421030">App Store</a>
     </nav>
   </div>
-  <p class="credits">Apple, the Apple logo, App Store, iCloud, iPhone and Siri are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
+  <p class="credits">Apple, App Store, iCloud, iPhone, Siri and TestFlight are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
 </footer>
 
 <script>
