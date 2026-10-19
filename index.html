@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Margins: pages, notes and reading stats for iPhone</title>
-<meta name="description" content="Log the page you’re on and a short note about what you read. See your reading days, pages this year and best months. Books sync through iCloud.">
+<meta name="description" content="Each time you read, Margins asks what page you’re on and what you read. The pages fill in your reading days. What you write stays with the book.">
 <meta name="color-scheme" content="light dark">
 <meta name="apple-itunes-app" content="app-id=6822421030">
 <meta name="theme-color" content="#D6B2B4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#4D1513" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="Margins: pages, notes and reading stats">
-<meta property="og:description" content="Log the page you’re on and a short note about what you read. See your reading days, pages this year and best months. Books sync through iCloud.">
+<meta property="og:description" content="Each time you read, Margins asks what page you’re on and what you read. The pages fill in your reading days. What you write stays with the book.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://miloszfilimowski.github.io/margins/">
 <meta property="og:image" content="https://miloszfilimowski.github.io/margins/assets/og.png">
@@ -161,6 +161,41 @@
     @keyframes fill { from { background-color: var(--l0); transform: scale(0.8); } }
   }
 
+  /* The method: the habit behind the app, with a real-looking note and the research */
+  .method { display: grid; gap: 44px; padding-top: 88px; }
+  .method h2 { padding: 0 8px; max-width: 22ch; font-size: clamp(1.9rem, 1.4rem + 2vw, 3.2rem); line-height: 1.12; }
+  .steps { list-style: none; padding: 0 8px; display: grid; gap: 24px; counter-reset: step; }
+  .steps li { counter-increment: step; display: grid; grid-template-columns: 34px minmax(0, 1fr); column-gap: 14px; row-gap: 4px; align-items: start; }
+  .steps li::before { content: counter(step); grid-row: span 2; width: 34px; height: 34px; border-radius: 50%; background: var(--action); color: #FFFFFF; font: 700 16px/34px var(--rounded); text-align: center; }
+  .steps strong { font-size: 18px; font-weight: 600; line-height: 34px; color: var(--text); }
+  .steps p { color: var(--text-2); }
+  .method-example { display: grid; gap: 40px; }
+  .method-aside { display: grid; gap: 32px; padding: 0 8px; }
+  .testimony { display: grid; gap: 10px; padding-left: 20px; border-left: 3px solid var(--line); }
+  .testimony blockquote { font: 22px/1.42 var(--serif); color: var(--text); }
+  .testimony figcaption { font-size: 14px; color: var(--muted); }
+  .name-def { display: grid; gap: 6px; padding: 20px 0; border-top: 0.5px solid var(--line); border-bottom: 0.5px solid var(--line); color: var(--text-2); font-size: 16px; }
+  .def-word { font: 600 22px/1.3 var(--serif); color: var(--text); }
+  .def-word span { margin-left: 8px; font: italic 400 16px var(--serif); color: var(--muted); }
+  .method-why { padding: 26px 24px; background: var(--card); border-radius: 24px; }
+  .method-why h3 { font-size: 19px; font-weight: 600; margin-bottom: 18px; }
+  .method-why ul { list-style: none; padding: 0; display: grid; gap: 22px; }
+  .method-why li { font-size: 15px; line-height: 1.55; color: var(--text-2); }
+  .method-why strong { display: block; margin-bottom: 4px; color: var(--text); font-weight: 600; }
+  .method-why .src { display: block; margin-top: 6px; font-size: 13px; }
+  .method-caveat { margin-top: 22px; padding-top: 18px; border-top: 0.5px solid var(--line); font-size: 13px; color: var(--muted); }
+
+  /* What 15 pages a day adds up to: three numbers in the pages colour */
+  .adds { display: grid; gap: 20px; padding-top: 72px; }
+  .adds h2 { padding: 0 8px; font-size: clamp(1.6rem, 1.25rem + 1.3vw, 2.4rem); line-height: 1.18; }
+  .adds-grid { display: grid; gap: 10px; }
+  .stat { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; background: var(--card); border-radius: 22px; }
+  .stat-num { font: 900 clamp(2.4rem, 2rem + 1.6vw, 3.25rem)/1 var(--rounded); color: var(--pages); font-variant-numeric: tabular-nums; }
+  .stat p { color: var(--text-2); font-size: 15px; }
+  .adds-text { display: grid; gap: 10px; padding: 0 8px; max-width: 40rem; color: var(--text-2); }
+  .adds-source { font-size: 13px; color: var(--muted); }
+  .adds-intro { padding: 0 8px; margin-top: -8px; color: var(--text-2); }
+
   /* Notes */
   .band { --tint: var(--t-action); padding-bottom: 24px;
     background: linear-gradient(180deg, rgb(var(--tint) / 0) 0%, rgb(var(--tint) / var(--ba)) 28%, rgb(var(--tint) / var(--ba)) 62%, rgb(var(--tint) / 0) 100%); }
@@ -222,6 +257,26 @@
     .feature-text { padding: 0; gap: 16px; max-width: 30rem; }
     .feature-text p { font-size: 18px; }
     .stage { --w: 300px; }
+    .method { gap: 72px; padding-top: 136px; }
+    .method h2, .steps, .method-aside { padding: 0; }
+    .steps { gap: 0; }
+    .steps li { grid-template-columns: 40px minmax(0, 15rem) minmax(0, 40rem); column-gap: 28px; align-items: baseline; padding: 28px 0; border-top: 0.5px solid var(--line); }
+    .steps li:last-child { border-bottom: 0.5px solid var(--line); }
+    .steps li::before { grid-row: auto; align-self: start; width: 40px; height: 40px; font-size: 18px; line-height: 40px; }
+    .steps strong { font-size: 21px; line-height: 40px; }
+    .steps p { font-size: 17px; line-height: 1.6; }
+    .method-example { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 80px; align-items: center; }
+    .method-aside { gap: 40px; }
+    .adds { padding-top: 112px; gap: 28px; }
+    .adds h2, .adds-text, .adds-intro { padding: 0; }
+    .adds-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .stat { padding: 26px 28px; border-radius: 28px; }
+    .closing { padding-top: 136px; }
+    .method-why { padding: 44px 48px; border-radius: 32px; }
+    .method-why h3 { font-size: 22px; margin-bottom: 28px; }
+    .method-why ul { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+    .method-why li { font-size: 16px; }
+    .method-caveat { margin-top: 32px; padding-top: 22px; }
     .days { margin-top: 112px; padding: 44px 48px; grid-template-columns: minmax(0, 30rem) minmax(0, 520px); justify-content: space-between; align-items: center; gap: 56px; border-radius: 32px; }
     .grid { gap: 5px; }
     .legend { font-size: 13px; gap: 5px; }
@@ -288,10 +343,10 @@
     <div class="hero-text">
       <svg class="app-icon" role="img" aria-label="Margins app icon"><use href="#icon"/></svg>
       <h1>Margins</h1>
-      <p class="subtitle">Pages, notes and reading stats</p>
-      <p class="lead">Log the page you’re on and a short note about what you read. See your reading days, pages this year and best months. Books sync through iCloud.</p>
+      <p class="subtitle">Log pages, fill margins</p>
+      <p class="lead">Each time you read, Margins asks what page you’re on and what you read. The pages fill in your reading days. What you write stays with the book.</p>
       <a class="beta" href="https://testflight.apple.com/join/FGvyMEuq">Join the beta on TestFlight</a>
-      <p class="small">Free. You’ll need the TestFlight app on your iPhone.</p>
+      <p class="small">Free. No account, no ads, no tracking.<br>You’ll need the TestFlight app on your iPhone.</p>
     </div>
     <div class="stage s-hero">
       <div class="phone">
@@ -301,6 +356,55 @@
           <img src="assets/screens/today-660.webp" width="660" height="1347" fetchpriority="high" alt="The Today screen in Margins: the book you’re reading, the I read today button and the reading grid of the last 20 weeks.">
         </picture>
       </div>
+    </div>
+  </section>
+
+  <section class="wrap method" aria-labelledby="method-title">
+    <h2 id="method-title">Read every day. Close the book. Write two sentences from memory.</h2>
+    <ol class="steps">
+      <li><strong>Read.</strong><p>15 pages, 15 minutes or one chapter: pick the amount that suits you. What matters is that you find time for it every day. Then tap “I read today” and enter the page you’re on. The day fills in on your grid.</p></li>
+      <li><strong>Close the book.</strong></li>
+      <li><strong>Write two sentences.</strong><p>Margins asks “What did you read?” Write what you remember. It’s saved with the date and the pages.</p></li>
+    </ol>
+    <div class="method-example">
+      <figure class="note">
+        <figcaption><cite>Meditations</cite> · Oct 14, 2026 · pages 61–83</figcaption>
+        <blockquote><p>Most of what upsets us is our opinion of a thing, not the thing. Drop the opinion and it shrinks.</p></blockquote>
+      </figure>
+      <div class="method-aside">
+        <figure class="testimony">
+          <blockquote><p>“This is how I read: about 20 pages most mornings, then two sentences about it.”</p></blockquote>
+          <figcaption>Miłosz Filimowski, Margins author</figcaption>
+        </figure>
+        <div class="name-def">
+          <p class="def-word">mar·gin <span>noun</span></p>
+          <p>The space around the text on a page, where readers write down what they think. That’s where the name comes from.</p>
+        </div>
+      </div>
+    </div>
+    <div class="method-why">
+      <h3>Why write it from memory</h3>
+      <ul>
+        <li><strong>Writing down what you remember beats rereading.</strong> Students who read a text and then wrote down what they remembered did better a week later than students who studied with the text open. <span class="src"><a href="https://doi.org/10.1126/science.1199327">Karpicke and Blunt 2011</a>, <a href="https://doi.org/10.1037/a0037559">Rowland 2014</a></span></li>
+        <li><strong>Your own words help.</strong> People remember what they write themselves better than what they only read. <span class="src"><a href="https://pubmed.ncbi.nlm.nih.gov/17645161/">Bertsch et al. 2007</a></span></li>
+        <li><strong>Short is enough.</strong> In studies of writing to learn, longer writing didn’t help more than short. <span class="src"><a href="https://doi.org/10.3102/00346543074001029">Bangert-Drowns et al. 2004</a></span></li>
+      </ul>
+      <p class="method-caveat">Most of these studies were done with students and short texts, not with adults reading books for months.</p>
+    </div>
+  </section>
+
+  <section class="wrap adds" aria-labelledby="adds-title">
+    <h2 id="adds-title">What 15 pages a day adds up to</h2>
+    <p class="adds-intro">15 pages is only an example. Any amount you keep up adds up the same way.</p>
+    <div class="adds-grid">
+      <div class="stat"><span class="stat-num">15–20</span><p>minutes a day at an average reading speed</p></div>
+      <div class="stat"><span class="stat-num">5,475</span><p>pages in a year</p></div>
+      <div class="stat"><span class="stat-num">18</span><p>books in a year, if a book has 300 pages</p></div>
+    </div>
+    <div class="adds-text">
+      <p>Starting smaller counts too. 5 pages a day is about 6 books a year.</p>
+      <p>And you keep what you read. Every day you read, you write two sentences, so a year later you can go back to what each book said.</p>
+      <p class="adds-source">Adults read about 238 words a minute (<a href="https://doi.org/10.1016/j.jml.2019.104047">Brysbaert 2019</a>), and a book page has about 250 to 300 words.</p>
     </div>
   </section>
 
@@ -591,6 +695,12 @@
         <li><span class="tile t-neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></span><div><h3>Languages</h3><p>English, Polish, German, Spanish, French and Japanese.</p></div></li>
       </ul>
     </div>
+  </section>
+
+  <section class="wrap closing" aria-labelledby="try-title">
+    <h2 id="try-title">Try Margins</h2>
+    <a class="beta" href="https://testflight.apple.com/join/FGvyMEuq">Join the beta on TestFlight</a>
+    <p class="small">Free. No account, no ads, no tracking.</p>
   </section>
 
   <div class="wrap docs">
